@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: springdoc-playground
+  datasource:
+    password: password
+    url: jdbc:h2:mem:springdoc
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+logging:
+  exception-conversion-word: '%wEx{full, org, javax, java.base}'
+  file:
+    name: ./logs/backend.log
+  level:
+    org:
+      hibernate:
+        SQL: debug
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(---){faint} %clr([%15.15t]){faint} %clr([%mdc{Tracker-id}]){magenta} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p --- [%t] [%mdc{Tracker-id}] %-40.40logger{39} : %m%n%nopexception'
+security:
+  key-store-password: 1qz2wx3ec
+  key-store-path: classpath:/api_auth.jks
+springdoc:
+  api-docs:
+    path: /swagger
+  swagger-ui:
+    path: '/swagger-ui.html'
